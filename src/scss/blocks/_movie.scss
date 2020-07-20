@@ -1,0 +1,63 @@
+.movie-detail{
+   position: relative;
+   width: 100vw;
+   min-height: calc(100vh - 60px);
+   padding: 0 5vw;
+   top: 80px;
+   border-radius: 5px;
+
+   .cont-two-col{
+      position: relative;
+      margin-top: 1rem;
+      // min-height: 50vh;
+      display: grid;
+      grid-template-columns: 30% 70%;
+
+      @include phone {
+         grid-template-columns: 1fr;
+      }
+
+   }
+
+   .col-one{
+      width: 100%;
+      
+      img {
+         width: 100%;
+         object-fit: cover;
+         object-position: center center;
+      }
+   }
+
+   .col-two{
+      width: 95%;
+      height: 95%;
+      object-fit: cover;
+      object-position: center center;
+
+      .movie-detail-item{
+         font-size: calc(.5em + 1.5vw);
+         color: $clr-light;
+         font-weight: 600;
+
+         span{
+            font-weight: 400;
+         }
+      }
+   }
+
+   .options{
+      height: 100px;
+   }
+
+}
+
+.section-title--movie{
+   text-align: center;
+   font-size: calc(.5em + 5vw);
+   padding: .5rem 0;
+   line-height: 1;
+   background: $clr-dark;
+   color: $sec-clr;
+   z-index: 1;
+}

@@ -1,0 +1,121 @@
+*,
+*::after,
+*::before{
+   box-sizing: border-box;
+}
+body {
+   margin: 0;
+   font-family: $ff-body;
+   font-size: $fs-base;
+   background: $main-clr;
+   color: $clr-dark;
+}
+
+h1{
+   margin: 0;
+   font-size: 3em;
+   font-weight: bold;
+}
+p{
+   font-size: 1rem;
+   line-height: 1;
+   letter-spacing: .1em;
+   margin: .4em 0;
+}
+
+.small{
+   font-size: .75em;
+}
+
+a{
+   text-decoration: none;
+   font-size: 1em;
+   color: $clr-accent;
+   margin: .5em 0;
+}
+
+.btn{
+   border-radius: 5%;
+   border: 1px solid darken($sec-clr, 15);
+   background: darken($sec-clr, 15);
+   color: $clr-light;
+   font-size: .8em;
+   padding: .8em 2em;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   transition: all .8 ease-in;
+   cursor: pointer;
+   margin-top: .5em;
+
+   &:active{
+      transform: scale(.95);
+   }
+
+   &:focus{
+      outline: none;
+   }
+
+   &.ghost{
+      background: transparent;
+      border-color: $clr-light;
+   }
+}
+
+img{
+   width: 110px;
+}
+
+.section-title{
+   font-size: 3em;
+   // background: rgba(0,0,0, .3);
+   padding: .7em 1em;
+   text-transform: uppercase;
+   color: $main-clr;
+}
+
+.section-subtitle{
+   font-size: 2em;
+   padding: .7em 1em;
+   color: $clr-light;
+   line-height: 1;
+}
+
+.title{
+   margin: 0 0 1em;
+   font-size: 1.5em;
+   color: $clr-light;   
+}
+
+.txt{
+   width: 100%;
+   text-align: center;
+   color: $clr-light;
+}
+
+.txt1{
+   width: 100%;
+   text-align: center;
+   color: $clr-light;
+   font-size: 1.2em;
+   padding: 0 2em;
+}
+
+.pulsate{
+   width: 70%;
+   font-size: 1.1em;
+   text-transform: uppercase;
+   background: rgba($sec-clr, .8);
+   padding: .7em 1em;
+   color: $main-clr;
+   animation: pulsate 3s ease-in-out infinite;
+   cursor: pointer;
+   z-index: 50;
+}
+
+.msg-error-show{
+   background: #b06ab3;
+   color :#ffffff;
+   text-align: start;
+   padding: 0 1em;
+   border-radius: .2em;
+}

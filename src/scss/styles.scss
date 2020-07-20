@@ -1,0 +1,15 @@
+@import "config/config";
+@import "mixin/mixin";
+
+@import "base/base";
+
+@import "blocks/header";
+@import "blocks/modal-login";
+@import "blocks/form-user";
+@import "blocks/card-movie";
+@import "blocks/home";
+@import "blocks/search";
+@import "blocks/movie";
+@import "blocks/modal-fav";
+@import "blocks/fav-movies";
+@import "blocks/footer";

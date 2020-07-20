@@ -1,0 +1,64 @@
+.form-control{
+   width: 90%;
+   margin-bottom: .7em;
+   padding-bottom: .2em;
+   position: relative;
+
+   input{
+      background: lighten($sec-clr, 30);
+      color: $main-clr;
+      border: 2px solid transparent;
+      padding: .4em 1em;
+      margin: 0 0 0.5em;
+      border-radius: 5px;
+      display: block;
+      width: 100%;
+
+      &:focus{
+         outline: 0;
+         border-color: $clr-light;
+      }
+   }
+
+   i{
+      position: absolute;
+      visibility: hidden;
+      top: .45em;
+      right: 10px;
+      color: #2ecc71;
+   }
+
+   span{
+      position: absolute;
+      visibility: hidden;
+      left: 0;
+      margin: 0 1em 6em;
+      transform: translateY(-50%);
+      font-size: .7em;
+   }
+
+   .fa-exclamation-circle,
+   span{
+      color: #e74c3c;
+   }
+
+   &.success{
+      input{
+         border-color: #2ecc71;
+         }
+      .fa-check-circle{
+         visibility: visible;
+      }
+   }
+   &.warning{
+      input{
+         border-color: #e74c3c;
+         }
+
+      .fa-exclamation-circle,
+      span{
+         visibility: visible;
+      }
+   }
+}
+

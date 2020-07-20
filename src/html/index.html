@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/118fdc7223.js" crossorigin="anonymous"></script>
+   <link rel="shortcut icon" href="/assets/img/logos/favicon.png" type="image/x-icon">
+   <link rel="stylesheet" href="/css/styles.css">
+   <title>Task 2 - Taguara Digital Cinema</title>
+</head>
+<body>
+   <header class="main-header" id="main-header">
+      <div class="logo">
+         <a href="#"><img src="/assets/img/logos/TG_Logo.png" alt=""></a>
+      </div>
+      <nav class="main-nav" id="main-nav">
+         <ul class="main-nav-links">
+            <li class="main-nav-link"><a href="#" class="main-nav-link__item main-nav-link__item--active">Inicio</a></li>
+            <li class="main-nav-link"><a href="#favorite" class="main-nav-link__item">Favoritos</a></li>
+         </ul>
+      </nav>
+      <div class="toggle-menu" id="toggle-menu">
+         <span class="lineas linea1"></span>
+         <span class="lineas linea2"></span>
+         <span class="lineas linea3"></span>
+      </div>
+      <ul class="users" id="users">
+         <li class="users-links"><a href="#" class="users-links__items"><i class="fas fa-sign-in-alt"></i><span class="small">Login</span></a></li>
+         <li class="users-links" id="logout"><a href="#" class="users-links__items  users-links__items--show "><i class="fas fa-sign-out-alt"></i><span class="small">Logout</span></a></li>
+         <li class="users-links"><a href="#" class="users-links__items"><i class="fas fa-user-plus"></i><span class="small">Register</span> </a></li>
+      </ul>
+   </header>
+
+   <section class="home">
+      <div class="search">
+         <h1 class="section-title section-title--search">Taguara Digital</h1>
+         <form class="search-form" id="search-form">
+            <div class="form-control-search form-control-title">
+               <label for="title" class="search-label">Titulo</label>
+               <input type="text" name="title" placeholder="Titulo" class="input-search" id="search-title" />
+            </div>
+            <div div class="form-control-search form-control-year">
+               <label for="year" class="search-label">Año</label>
+               <input type="text" name="year" placeholder="Año" class="input-search" id="search-year" />
+            </div>
+            <button class="btn search-btn" id="search-btn">Buscar</button>
+            <div class="msg-error" id="msg-error"></div>
+         </form>
+         <div class="pages">
+            <div class="prev" id='prev'><i class="fa fa-arrow-circle-left fa-2x"></i></div>
+            <div class="amount-movies" id="amount-movies"></div>
+            <div class="current-page" id="current-page"></div>
+            <div class="next" id='next'><i class="fa fa-arrow-circle-right fa-2x"></i></div>
+         </div>
+      </div>
+      <div class="home-grid">
+         <div class="movies" id="movies"></div>
+      </div>
+   </section>
+
+   <!-- Favorite  -->
+   <section class="favorite" id="favorite">
+      <div class="fav-search">
+         <h2 class="section-title section-title--fav-search" id="fav-title">Las favoritas</h2>
+      </div>
+      <div class="fav-grid">
+         <div class="fav-movies" id="fav-movies"></div>
+      </div>
+   </section>
+
+   <section class="modal-fav" id='modal-fav'></section>
+
+   <!-- footer -->
+   <footer class="footer">
+      <a class="footer__link" href="mailto:prueba@correo.com"> <i class="fas fa-envelope fa-2x"> </i> prueba@correo.com</a>
+      <ul class="social-list">
+         <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-twitter fa-3x"></i></a></li>
+         <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-github fa-3x"></i></a></li>
+         <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-linkedin fa-3x"></i></a></li>
+         <li class="social-list__item"><a class="social-list__link" href="#"><i class="fab fa-youtube fa-3x"></i></a></li>
+      </ul>
+   </footer>
+
+   <script src="/js/index.js"></script>
+</body>
+</html>

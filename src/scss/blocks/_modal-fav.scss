@@ -1,0 +1,21 @@
+.modal-fav {
+   position: fixed;
+   // background: url('/assets/img/b1.jpg') no-repeat center center /cover ;
+   top: 35%;
+   left: 15vw;
+   z-index: 1250;
+   width: 70vw;
+   height: 30vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   transform: scale(0);
+   transition: all .5s ease-in-out;
+   background: $clr-dark;
+   color: $clr-light;
+
+   &--show{
+      transform: scale(1);
+   }
+}
