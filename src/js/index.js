@@ -51,7 +51,6 @@ const showInitialMovies = () =>{
       const initialMovies = ['superman', 'batman', 'star', 'harry', 'speed', 'hard', 'avengers', 'rocky','lego'];
       const i = Math.floor((Math.random() * initialMovies.length));
       lastFind.title = initialMovies[i];
-      console.log('en showInitialMovies', lastFind)
       sessionStorage.setItem('lastFindDo', JSON.stringify(lastFind));
    }
    
@@ -91,7 +90,7 @@ searchForm.addEventListener('submit', (e) =>{
       lastFind.page = '1';
 
       sessionStorage.setItem('lastFindDo', JSON.stringify(lastFind));
-      console.log('en buscar ', lastFind)
+      
       processMovies(lastFind.title,lastFind.year,lastFind.page) 
 
    } else{
@@ -105,26 +104,49 @@ searchForm.addEventListener('submit', (e) =>{
 /*----------------------------------------------------------------------------------------
    Funcion que busca las peliculas por titulo y otros criterios indicados en la busqueda
 ----------------------------------------------------------------------------------------*/
+
+let current;
+let result;
+const amountMovies = document.getElementById('amount-movies');
+const currentPages = document.getElementById('current-page');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+const processMovies = (title,year,page) => {
+   current = page;
+
+   const buscar = `?s=${title}&type=movie&y=${year}&page=${page}`
+   const url = `http://www.omdbapi.com/${buscar}&apikey=c52b4a65`;
+   
+   findMovies(url).then( (cant) => {
+      result = cant;
+      if(result === 0 ){
+         msgError.classList.add('msg-error--show');
+         msgError.innerHTML = `<p> No hay registros para el criterio de busqueda indicado</p>`;
+      }
+      else {
+         amountMovies.innerHTML = `hay ${result} movie `
+         currentPages.innerHTML = ` Estas en la paginas ${page} `
+      }
+   })
+}
+
 const findMovies = (url) => {
-   return new Promise((resPro, rejPro) => {
-      try {
-         fetch(url)
-            .then(resFetch => resFetch.json())
-            .then(data => {
-
-               if(data.Response === 'True') {
-                  showMovies((data.Search));
-                  resPro(data.totalResults)
-
-               } else {
-                  resPro(0)
-               }
-            })
+   return new Promise((resolve, reject) => {
+      fetch(url)
+         .then(resFetch => resFetch.json())
+         .then(data => {
+            if(data.Response === 'True') {
+               showMovies((data.Search));
+               resolve(data.totalResults)
+            } else {
+               resolve(0)
+            }
+         // .catch {
+         //    reject(console.log('No hay peliculas con ese criterio de busqueda'))
+         // }
+      })
             // .catch(console.log(` no hay peliculas`))
-      }
-      catch {
-         rejPro(console.log('No hay peliculas con ese criterio de busqueda'))
-      }
    })
 }
 
@@ -266,32 +288,6 @@ toggleMenu.addEventListener('click', ()=>{
    toggleMenu.classList.toggle('toggle-menu--open');
 })
 
-
-
-let current;
-let result;
-const processMovies = async (title,year,page) => {
-   current = page;
-   const amountMovies = document.getElementById('amount-movies');
-   const currentPages = document.getElementById('current-page');
-   const prev = document.getElementById('prev');
-   const next = document.getElementById('next');
-
-   const buscar = `?s=${title}&type=movie&y=${year}&page=${page}`
-   const url = `http://www.omdbapi.com/${buscar}&apikey=c52b4a65`;
-   console.log(url)
-   result = await findMovies(url);
-
-      if(result === 0 ){
-         msgError.classList.add('msg-error--show');
-         msgError.innerHTML = `<p> No hay registros para el criterio de busqueda indicado</p>`;
-      }
-      else {
-         amountMovies.innerHTML = `hay ${result} peliculas `
-         currentPages.innerHTML = ` pagina ${page} `
-      }
-}
-
 prev.addEventListener('click', () => {
    lastFind = JSON.parse(sessionStorage.getItem('lastFindDo'))
    current = lastFind.page;
@@ -299,7 +295,6 @@ prev.addEventListener('click', () => {
    if( current > 0 ){
       lastFind.page = current;
       sessionStorage.setItem('lastFindDo', JSON.stringify(lastFind));
-      console.log('en previos', lastFind)
       processMovies(lastFind.title,lastFind.year,lastFind.page) 
 
    }
